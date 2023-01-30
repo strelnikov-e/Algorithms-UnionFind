@@ -34,7 +34,7 @@ public class Main {
                 }
             }
             long endTime = System.nanoTime();
-            System.out.println("Eager Tree: \t" + (endTime - startTime));
+            System.out.println("Eager Tree: \t\t" + (endTime - startTime));
 
             UnionFindTree unionFindTree = new UnionFindTree(N);
             startTime = System.nanoTime();
@@ -47,7 +47,21 @@ public class Main {
                 }
             }
             endTime = System.nanoTime();
-            System.out.println("Tree: \t\t\t" + (endTime - startTime));
+            System.out.println("Tree: \t\t\t\t" + (endTime - startTime));
+
+            UnionFindTreeFast unionFindTreeFast = new UnionFindTreeFast(N);
+            startTime = System.nanoTime();
+            while (((input = reader.readLine()) != null)) {
+                String[] line = input.split(",");
+                int p = Integer.parseInt(line[0]);
+                int q = Integer.parseInt(line[1]);
+                if (!unionFindTreeFast.connected(p, q)) {
+                    unionFindTreeFast.union(p, q);
+                }
+            }
+            endTime = System.nanoTime();
+            System.out.println("Tree Fast: \t\t\t" + (endTime - startTime));
+
 
             UFTreeBigEl unionFindBigEl = new UFTreeBigEl(N);
             startTime = System.nanoTime();
@@ -60,7 +74,7 @@ public class Main {
                 }
             }
             endTime = System.nanoTime();
-            System.out.println("Fast Tree: \t\t" + (endTime - startTime));
+            System.out.println("Fast Tree Compressed: \t" + (endTime - startTime));
 
 
         }
